@@ -102,5 +102,6 @@ document.addEventListener("DOMContentLoaded", function(event){
     document.getElementById("step-eight-a-finish").addEventListener("click", function(event){
        document.getElementById("step-eight-a-modal").value = "step-twelve";
        ccform.next();
+
     });
 });
