@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+    <title>Cell Culture</title>
+    <script type="text/javascript" src="{{ url_for('site', path='/js/steps.js') }}"></script>
+    <link href="{{ url_for('tabler', path='/css/tabler.css') }}" rel="stylesheet" />
+</head>
+<body class="layout-boxed theme-light">
+
+    <div class="page">
+        {% include "shared/header.html" %}
+        {% include "shared/navbar.html" %}
+        <div class="page-wrapper">
+            {% block content %}
+            {% endblock %}
+            {% include "shared/footer.html" %}
+        </div>
+    </div>
+
+    <script type="text/javascript" src="{{ url_for('tabler', path='/js/tabler.js') }}"></script>
+</body>
+</html>

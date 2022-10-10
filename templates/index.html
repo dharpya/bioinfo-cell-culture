@@ -1,0 +1,212 @@
+{% extends "shared/base.html" %}
+
+
+{% block content %}
+
+<!-- Page header -->
+<div class="page-header d-print-none">
+  <div class="container-xl">
+    <div class="row g-2 align-items-center">
+      <div class="col">
+        <h2 class="page-title">
+          Cell Culture
+        </h2>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Page body -->
+<div class="page-body">
+  <div class="container-xl">
+    <div class="row row-cards">
+      <div class="col-12">
+        <div class="card">
+          <div class="card-header">
+            <h4>Formulário de Parametrização</h4>
+          </div>
+          <div class="card-body">
+            <form>
+              <!-- Step #1 -->
+              <div id="step-one-div" class="form-group mb-3">
+                <label class="form-label required">
+                  Qual o tipo celular você está trabalhando?
+                </label>
+                <div>
+                  <select id="step-one-select" class="form-select">
+                    <option selected disabled>Selecione uma opção</option>
+                    <option>CasKi</option>
+                    <option>Células Tronco Mesenquimais</option>
+                    <option>Fibroblastos primários</option>
+                    <option>iPSCs</option>
+                    <option>MRC5</option>
+                  </select>
+                </div>
+              </div>
+              <!-- Step #2 -->
+              <div id="step-two-div" class="form-group mb-3 visually-hidden">
+                <label class="form-label required">
+                  Você quer calcular o número de células pela contagem da Câmara de Neubauer?
+                </label>
+                <div>
+                  <select id="step-two-select" class="form-select">
+                    <option selected disabled>Selecione uma opção</option>
+                    <option value="step-three">Não</option>
+                    <option value="step-four">Sim</option>
+                  </select>
+                </div>
+              </div>
+              <!-- Step #3 -->
+              <div id="step-three-div" class="form-group mb-3 visually-hidden">
+                <label class="form-label required">
+                  Digite o número total de células calculado:
+                </label>
+                <div>
+                  <input id="step-three-text" class="form-control" type="number">
+                </div>
+              </div>
+              <!-- Step #4 -->
+              <div id="step-four-div" class="form-group mb-3 visually-hidden">
+                <label class="form-label required">
+                  Quantas células você contou na câmara?
+                </label>
+                <div>
+                  <input id="step-four-text" class="form-control" type="number">
+                </div>
+              </div>
+              <!-- Step #5 -->
+              <div id="step-five-div" class="form-group mb-3 visually-hidden">
+                <label class="form-label required">
+                  Qual foi a diluição (ml) utilizada para a contagem das células?
+                </label>
+                <div>
+                  <input id="step-five-text" class="form-control" type="number">
+                </div>
+              </div>
+              <!-- Step #6 -->
+              <div id="step-six-div" class="form-group mb-3 visually-hidden">
+                <label class="form-label required">
+                  Qual método de contagem você usou?
+                </label>
+                <div>
+                  <select id="step-six-select" class="form-select">
+                    <option selected disabled>Selecione uma opção</option>
+                    <option value="step-eight">Quadrante central</option>
+                    <option value="step-seven">Quadrante lateral</option>
+                  </select>
+                </div>
+              </div>
+              <!-- Step #7 -->
+              <div id="step-seven-div" class="form-group mb-3 visually-hidden">
+                <label class="form-label required">
+                  Quantos quadrantes você utilizou para a contagem?
+                </label>
+                <div>
+                  <input id="step-seven-text" class="form-control" type="number">
+                </div>
+
+              </div>
+
+              <!-- Step #8 -->
+              <div id="step-eight-div" class="form-group mb-3 visually-hidden">
+                <label class="form-label required">
+                  Seu número total de células/ml é:
+                </label>
+                <div>
+                  <input id="step-eight-text" class="form-control" type="number">
+                </div>
+
+              <!-- Step #8a -->
+               <div id="step-eight-a-div" class="modal modal-blur fade" id="modal-small" tabindex="-1" role="dialog" aria-hidden="true">
+                 <div class="modal-dialog modal-sm modal-dialog-centered" role="document">
+                  <div class="modal-content">
+                    <div class="modal-body">
+                      <div class="modal-title">Você deseja continuar o preenchimento?</div>
+                      <div>A partir desta etapa, você já pode pular diretamente para os resultados do formulário.</div>
+                    </div>
+                    <div class="modal-footer">
+                      <button id="step-eight-a-continue" type="button" class="btn btn-blue" data-bs-dismiss="modal">Continuar</button>
+                      <button id="step-eight-a-finish" type="button" class="btn btn-green" data-bs-dismiss="modal">Concluir</button>
+                    </div>
+
+                    <input id="step-eight-a-modal" type="hidden" value="step-eight-a" />
+                    <a href="#" id="step-eight-a-modal-button" class="btn visually-hidden" data-bs-toggle="modal" data-bs-target="#step-eight-a-div">
+                      Simple modal
+                    </a>
+
+                  </div>
+                </div>
+              </div>
+
+
+              </div>
+              <!-- Step #9 -->
+              <div id="step-nine-div" class="form-group mb-3 visually-hidden">
+                <label class="form-label required">
+                  Selecione em qual tipo de placa/ frasco vai plaquear as células:
+                </label>
+                <div>
+                  <select id="step-nine-select" class="form-select">
+                    <option selected disabled>Selecione uma opção</option>
+                    <option>Garrafas T25</option>
+                    <option>Garrafas T75</option>
+                    <option>Garrafas T175</option>
+                    <option>Placa 6 poços</option>
+                    <option>Placa 12 poços</option>
+                    <option>Placa 24 poços</option>
+                    <option>Placa 96 poços</option>
+                  </select>
+                </div>
+              </div>
+              <!-- Step #10 -->
+              <div id="step-ten-div" class="form-group mb-3 visually-hidden">
+                <label class="form-label required">
+                  Informe a quantidade de células desejadas para o para seu experimento:
+                </label>
+                <div>
+                  <select id="step-ten-select" class="form-select">
+                    <option selected disabled>Selecione uma opção</option>
+                    <option value="step-twelve-a">por cm2</option>
+                    <option value="step-twelve-b">número total de células por poço ou garrafa</option>
+                    <option value="step-eleven">desejo seguir a sugestão do programa para densidade celular</option>
+                  </select>
+                </div>
+              </div>
+              <!-- Step #11 -->
+              <div id="step-eleven-div" class="form-group mb-3 visually-hidden">
+                <label class="form-label required">
+                  Para qual experimento você está plaqueando as células?
+                </label>
+                <div>
+                  <select id="step-eleven-select" class="form-select">
+                    <option selected disabled>Selecione uma opção</option>
+                    <option>MTT 24hs</option>
+                    <option>MTT 48hs</option>
+                    <option>MTT 72hs</option>
+                    <option>MTT 7 dias</option>
+                    <option>ensaio de senescência celular</option>
+                    <option>ensaio de migração celular (wound healing)</option>
+                    <option>manutenção padrão de cultivo</option>
+                    <option>transfecção de 24 horas</option>
+                    <option>preciso das células confluentes o mais rápido possível</option>
+                  </select>
+                </div>
+              </div>
+              <div id="step-twelve-div" class="form-group mb-3 visually-hidden">
+                Lorem ipsum
+              </div>
+            </form>
+          </div>
+          <div class="card-footer text-end">
+            <div class="d-flex">
+              <button id="button-next-step" type="submit" class="btn btn-primary ms-auto">Próximo</button>
+              <button type="submit" class="btn btn-primary ms-auto visually-hidden">Enviar</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}
